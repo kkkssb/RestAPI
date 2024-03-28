@@ -1,5 +1,5 @@
 package com.sb.pp.controller;
-
+import java.lang.System;
 
 import com.sb.pp.domain.dto.StudentDTO;
 import com.sb.pp.service.StudentService;
@@ -24,6 +24,13 @@ public class StudentController {
         if(studentService.join(studentDTO)){
             return "/student/login";
         }
-        return "/student/join";
+        return "/student/login";
+
     }
+    @GetMapping("login")
+    public String login() {
+        return "login";
+    }
+
 }
+
