@@ -1,5 +1,6 @@
 package com.sb.pp.controller;
 import java.lang.System;
+import java.lang.*;
 
 import com.sb.pp.domain.dto.StudentDTO;
 import com.sb.pp.service.StudentService;
@@ -22,9 +23,12 @@ public class StudentController {
     @PostMapping("join")
     public String join(StudentDTO studentDTO) {
         if(studentService.join(studentDTO)){
-            return "/student/login";
+            System.out.println("afaf");
+            return "redirect:login";
         }
-        return "/student/login";
+        System.out.println("a");
+
+        return "redirect:login";
 
     }
     @GetMapping("login")

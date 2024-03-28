@@ -11,6 +11,7 @@ public class StudentServiceImpl implements StudentService{
     private StudentMapper studentMapper;
     @Override
     public boolean join(StudentDTO studentDTO) {
+
         return studentMapper.insertStudent(studentDTO)==1;
     }
 }
