@@ -18,22 +18,22 @@ public class StudentController {
     private StudentService studentService;
     @GetMapping("join")
     public String join1() {
-        return "join";
+        return "/student/join";
     }
     @PostMapping("join")
     public String join(StudentDTO studentDTO) {
         if(studentService.join(studentDTO)){
             System.out.println("afaf");
-            return "redirect:login";
+            return "/student/login";
         }
         System.out.println("a");
 
-        return "redirect:login";
+        return "redirect:/student/join";
 
     }
     @GetMapping("login")
     public String login() {
-        return "login";
+        return "/student/login";
     }
 
 }
