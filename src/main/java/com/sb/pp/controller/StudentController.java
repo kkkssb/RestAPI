@@ -22,9 +22,10 @@ public class StudentController {
     }
     @PostMapping("join")
     public String join(StudentDTO studentDTO) {
+        Long idx = 0L;
         if(studentService.join(studentDTO)){
             System.out.println("afaf");
-            return "/student/login";
+            return "redirect:/student/login";
         }
         System.out.println("a");
 

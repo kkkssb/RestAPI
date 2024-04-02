@@ -5,7 +5,9 @@ import lombok.Data;
 @Data
 public class StudentDTO {
 
-    private int id;
+    private Long idx;
+    private int grade;
     private String name;
     private int ban;
+    private int bun;
 }
