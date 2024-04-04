@@ -4,4 +4,7 @@
     <insert id="insertStudent">
         insert into student (name,grade,ban,bun) values(#{name},#{grade},#{ban},#{bun})
     </insert>
+    <select id="getAll">
+        select * from student;
+    </select>
 </mapper>

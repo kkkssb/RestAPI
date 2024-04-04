@@ -1,11 +1,13 @@
 package com.sb.pp.controller;
 import java.lang.System;
 import java.lang.*;
+import java.util.List;
 
 import com.sb.pp.domain.dto.StudentDTO;
 import com.sb.pp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +39,11 @@ public class StudentController {
         return "/student/login";
     }
 
+    @GetMapping("get")
+    public String get(Model model){
+        List<StudentDTO> list =studentService.getList();
+        model.addAttribute("list",list);
+        return "/student/get";
+    }
 }
 

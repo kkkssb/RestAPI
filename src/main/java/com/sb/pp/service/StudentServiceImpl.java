@@ -5,6 +5,8 @@ import com.sb.pp.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService{
     @Autowired
@@ -13,5 +15,10 @@ public class StudentServiceImpl implements StudentService{
     public boolean join(StudentDTO studentDTO) {
 
         return studentMapper.insertStudent(studentDTO)==1;
+    }
+
+    @Override
+    public List<StudentDTO> getList() {
+        return studentMapper.getAll();
     }
 }
