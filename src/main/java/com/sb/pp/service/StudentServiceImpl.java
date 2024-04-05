@@ -21,4 +21,9 @@ public class StudentServiceImpl implements StudentService{
     public List<StudentDTO> getList() {
         return studentMapper.getAll();
     }
+
+    @Override
+    public boolean remove(Long idx) {
+        return studentMapper.removeStudent(idx)==1;
+    }
 }

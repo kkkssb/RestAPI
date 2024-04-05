@@ -8,7 +8,6 @@
         border:2px solid;
         border-collapse:collapse;
         text-align:center;
-
         }
         td,th{
         border:2px solid;
@@ -31,8 +30,49 @@
             <td>[[${studentDto.grade}]]</td>
             <td>[[${studentDto.ban}]]</td>
             <td>[[${studentDto.bun}]]</td>
+            <td><a href="#">수정</a></td>
+<!--            <td><a th:href="@{/student/remove/{idx}(idx=${studentDto.idx})}">삭제</a></td>-->
+<!--            <td>-->
+<!--                <form name="boardForm" method="post" th:action="@{/student/remove/{idx}(idx=${studentDto.idx})}">-->
+<!--                    <input type="submit" value="삭제">-->
+<!--                </form>-->
+<!--            </td>-->
+            <td><button th:onclick="deleteById([[${studentDto.idx}]])">삭제</button></td>
         </tr>
         </th:block>
     </table>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+    function deleteById(idx) {
+	console.log(idx)
+	const reqUrl = "remove/"+idx
+	$.ajax({
+		type: "delete",
+		url: reqUrl,
+		// dataType: "json", 받아올 필요가 없으면 생략가능
+		success: function () {
+			console.log("ajax 성공")
+			// 삭제 성공 시 회원목록 페이지를 다시 요청
+			location.href = "/student/get"
+		},
+		error: function () {
+			alert("ajax 실패")
+		}
+
+	})
+}
+
+	// 아래도 함수선언 방법 중 하나임.
+	// 함수이름 : deleteFn, 매개변수 : memberId
+	const deleteFn = (idx) => {
+		console.log(idx)
+	}
+
+	// 함수이름 : deleteFn2, 매개변수 : X
+	const deleteFn2 = () => {
+
+	}
+
+</script>
 </html>

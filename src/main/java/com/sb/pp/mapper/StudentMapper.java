@@ -9,4 +9,5 @@ import java.util.List;
 public interface StudentMapper {
     int insertStudent(StudentDTO studentDTO);
     List<StudentDTO> getAll();
+    int removeStudent(Long idx);
 }

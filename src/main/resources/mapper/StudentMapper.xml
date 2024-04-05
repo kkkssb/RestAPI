@@ -7,4 +7,7 @@
     <select id="getAll">
         select * from student;
     </select>
+    <delete id="removeStudent">
+        delete from student where idx=#{idx}
+    </delete>
 </mapper>
