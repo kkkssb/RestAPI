@@ -10,4 +10,6 @@ public interface StudentService {
     boolean join(StudentDTO studentDTO);
     List<StudentDTO> getList();
     boolean remove(Long idx);
+    StudentDTO getOneList(Long idx);
+    boolean modify(StudentDTO studentDTO);
 }

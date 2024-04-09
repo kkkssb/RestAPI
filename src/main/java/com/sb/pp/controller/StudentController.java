@@ -48,9 +48,26 @@ public class StudentController {
     @DeleteMapping("remove/{idx}")
     public ResponseEntity remove(@PathVariable("idx") Long idx){
         if(studentService.remove(idx)){
-            return  new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(HttpStatus.OK);
         }
-        return  new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+    @GetMapping("modify/{idx}")
+    public String Getmodify(@PathVariable("idx") Long idx,Model model){
+        StudentDTO info =studentService.getOneList(idx);
+        model.addAttribute("info",info);
+        return "/student/modify";
+    }
+
+    @PatchMapping("modify/{idx}")
+    public ResponseEntity modify(@PathVariable("idx") Long idx, @RequestBody StudentDTO studentDTO){
+        if(studentService.modify(studentDTO)){
+            System.out.println("afaf");
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        System.out.println("a");
+
+        return new ResponseEntity(HttpStatus.OK);
 
     }
 }

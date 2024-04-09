@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>modify</title>
+</head>
+<body>
+<form id="joinForm" name="joinForm" method="post" action="/student/modify"
+      enctype="multipart/form-data">
+    <input type="text" name="name" id="name" th:value="${info.name}" readonly>
+    <input type="text" name="grade" id="grade" th:value="${info.grade}">
+    <input type="text" name="ban" id="ban" th:value="${info.ban}">
+    <input type="text" name="bun" id="bun" th:value="${info.bun}">
+    <button type="button" th:onclick="modifyStudent([[${info.idx}]])">수정</button>
+</form>
+
+<script>
+    function modifyStudent(idx) {
+        var idx = idx;
+        var name = document.getElementById('name').value;
+        var grade = document.getElementById('grade').value;
+        var ban = document.getElementById('ban').value;
+        var bun = document.getElementById('bun').value;
+
+        var data = {
+        idx:idx,
+            grade: grade,
+            ban: ban,
+            bun: bun
+        };
+
+        fetch('/student/modify/' + idx, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Student info updated successfully');
+                // 성공 시 필요한 작업 수행
+                location.href = "/student/get"
+            } else {
+                console.error('Failed to update student info');
+                // 업데이트 실패한 경우 필요한 작업 수행
+            }
+        })
+        .catch(error => {
+            console.error('Error updating student info:', error);
+            // 오류 발생 시 필요한 작업 수행
+        });
+    }
+</script>
+
+
+</body>
+</html>

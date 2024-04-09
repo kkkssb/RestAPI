@@ -5,9 +5,15 @@
         insert into student (name,grade,ban,bun) values(#{name},#{grade},#{ban},#{bun})
     </insert>
     <select id="getAll">
-        select * from student;
+        select * from student
     </select>
     <delete id="removeStudent">
         delete from student where idx=#{idx}
     </delete>
+    <select id="getOne">
+        select * from student where idx=#{idx};
+    </select>
+    <update id="updateStudent">
+        update student set grade=#{grade},ban=#{ban},bun=#{bun} where idx=#{idx};
+    </update>
 </mapper>

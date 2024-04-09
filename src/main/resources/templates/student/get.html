@@ -30,13 +30,7 @@
             <td>[[${studentDto.grade}]]</td>
             <td>[[${studentDto.ban}]]</td>
             <td>[[${studentDto.bun}]]</td>
-            <td><a href="#">수정</a></td>
-<!--            <td><a th:href="@{/student/remove/{idx}(idx=${studentDto.idx})}">삭제</a></td>-->
-<!--            <td>-->
-<!--                <form name="boardForm" method="post" th:action="@{/student/remove/{idx}(idx=${studentDto.idx})}">-->
-<!--                    <input type="submit" value="삭제">-->
-<!--                </form>-->
-<!--            </td>-->
+            <td><a th:href="@{/student/modify/{idx}(idx=${studentDto.idx})}">수정</a></td>
             <td><button th:onclick="deleteById([[${studentDto.idx}]])">삭제</button></td>
         </tr>
         </th:block>
@@ -62,17 +56,6 @@
 
 	})
 }
-
-	// 아래도 함수선언 방법 중 하나임.
-	// 함수이름 : deleteFn, 매개변수 : memberId
-	const deleteFn = (idx) => {
-		console.log(idx)
-	}
-
-	// 함수이름 : deleteFn2, 매개변수 : X
-	const deleteFn2 = () => {
-
-	}
 
 </script>
 </html>

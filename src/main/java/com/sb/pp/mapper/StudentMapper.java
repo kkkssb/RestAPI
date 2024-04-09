@@ -10,4 +10,6 @@ public interface StudentMapper {
     int insertStudent(StudentDTO studentDTO);
     List<StudentDTO> getAll();
     int removeStudent(Long idx);
+    StudentDTO getOne(Long idx);
+    int updateStudent(StudentDTO studentDTO);
 }
