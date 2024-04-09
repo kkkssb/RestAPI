@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>조회</title>
+    <style>
+        .table{
+        border:2px solid;
+        border-collapse:collapse;
+        text-align:center;
+        }
+        td,th{
+        border:2px solid;
+        padding: 5px 5px;
+        width:50px;
+        }
+    </style>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>이름</th>
+            <th>학년</th>
+            <th>반</th>
+            <th>번호</th>
+        </tr>
+        <th:block th:if="${list != null and list.size()>0}" th:each="studentDto : ${list}">
+        <tr>
+            <td>[[${studentDto.name}]]</td>
+            <td>[[${studentDto.grade}]]</td>
+            <td>[[${studentDto.ban}]]</td>
+            <td>[[${studentDto.bun}]]</td>
+            <td><a th:href="@{/student/modify/{idx}(idx=${studentDto.idx})}">수정</a></td>
+            <td><button th:onclick="deleteById([[${studentDto.idx}]])">삭제</button></td>
+        </tr>
+        </th:block>
+    </table>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+    function deleteById(idx) {
+	console.log(idx)
+	const reqUrl = "remove/"+idx
+	$.ajax({
+		type: "delete",
+		url: reqUrl,
+		// dataType: "json", 받아올 필요가 없으면 생략가능
+		success: function () {
+			console.log("ajax 성공")
+			// 삭제 성공 시 회원목록 페이지를 다시 요청
+			location.href = "/student/get"
+		},
+		error: function () {
+			alert("ajax 실패")
+		}
+
+	})
+}
+
+</script>
+</html>
